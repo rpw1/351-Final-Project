@@ -45,4 +45,4 @@ if __name__ == '__main__':
     # print(data.mndata.display(samples.test_7_type1))
     # print(data.mndata.display(samples.test_7_type2))
     # print(data.mndata.display(samples.test_8))
-    print(data.mndata.display(samples.test_9))
+    #print(data.mndata.display(samples.test_9))
