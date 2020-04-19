@@ -18,18 +18,10 @@ class MnistData:
 
         self.test_images, self.test_labels = self.mndata.load_testing()
 
-class Sample:
-
-    grid = None
-    name = None
-
-    def __init__(self, name : str):
-        self.grid = list()
-        self.name = name
-
 if __name__ == '__main__':
     data = MnistData()
     samples = SampleData()
+    print(data.training_labels[0])
     # print(data.training_images[0])
     # print(samples.test_0)
     # print(data.mndata.display(data.training_images[random.randint(0,6000)]))

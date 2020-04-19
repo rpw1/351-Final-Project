@@ -1,6 +1,8 @@
 
 class SampleData:
 
+    sample_pictures = list()
+
     def __init__(self):
         for x in range(len(self.test_0)):
             if self.test_0[x] == 1:
@@ -29,7 +31,6 @@ class SampleData:
                 self.test_8[x] = 255
             if self.test_9[x] == 1:
                 self.test_9[x] = 255
-            
 
     test_0 = [
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
