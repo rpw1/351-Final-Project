@@ -37,4 +37,4 @@ if __name__ == "__main__":
     data = MnistData()
     knn = KNN()
     #knn.classifyPicture(Picture(data.test_images[0]), data.test_labels[0], nonePicture.getSamples())
-    knn.classifyDataset(data.test_images, data.test_labels, nonePicture.getSamples())
+    #knn.classifyDataset(data.test_images, data.test_labels, nonePicture.getSamples())
