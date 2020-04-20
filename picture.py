@@ -46,7 +46,7 @@ class Picture:
                 elif current_distance < lowest_distance:
                     lowest_distance = current_distance
             distance = distance + lowest_distance
-        return int(distance)
+        return distance
 
 
     # def getSamples(self) :
