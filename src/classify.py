@@ -10,7 +10,7 @@ class KNN:
     white_space : int = None
     training_data : dict = None
 
-    def __init__(self, k = 5, white_space = 10):
+    def __init__(self, k = 5, white_space = 50):
         self.k = k
         self.white_space = white_space
         t = TrainingData(100)
