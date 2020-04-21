@@ -68,7 +68,4 @@ class TrainingData:
     def displayTrainingData(self, key : int):
         for picture in self.training_data[key]:
             print(self.mnist_data.mndata.display(picture.grid))
-
-if __name__ == "__main__":
-    t = TrainingData()
     
