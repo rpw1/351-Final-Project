@@ -2,7 +2,7 @@ from picture import Picture
 from sample import MnistData
 from trainingData import TrainingData
 from queue import ItemQueue
-import random, math
+import random, math, time
 
 class KNN:
 
@@ -51,9 +51,12 @@ if __name__ == "__main__":
     range_max = 100
     count = 0
     counter = 0
+    start_time = time.time()
     for x in range(range_max):
         counter = counter + 1
         print(counter)
         index = random.randint(0, len(data.test_images))
         count = count + knn.classify_picture(Picture(data.test_images[index]), data.test_labels[index])
     print(count/range_max)
+    end_time = time.time()
+    print(end_time - start_time) # Printing run time in seconds
