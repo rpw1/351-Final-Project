@@ -46,8 +46,11 @@ class Picture:
             distance = distance + lowest_distance
         return distance
 
+
+    # found at https://github.com/anandsekar/datashakers-digitrecognizer/blob/master/python/classify.py
     def oddDistance(self, otherPicture):
         distance = 0
         for x in range(0, len(self.grid)):
-            distance = distance + (self.grid[x] - otherPicture.grid[x]) ** 2
-        return distance ** 0.5
+            distance = distance + math.pow(self.grid[x] - otherPicture.grid[x], 2)
+        number = math.sqrt(distance)
+        return number

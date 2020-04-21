@@ -10,10 +10,10 @@ class KNN:
     white_space : int = None
     training_data : dict = None
 
-    def __init__(self, k = 6, white_space = 150):
+    def __init__(self, k = 5, white_space = 10):
         self.k = k
         self.white_space = white_space
-        t = TrainingData(k)
+        t = TrainingData(100)
         self.training_data = t.training_data
 
     def classify_picture(self, picture : Picture, label : int):
@@ -48,7 +48,7 @@ if __name__ == "__main__":
     data = MnistData()
     knn = KNN()
     ran_index = random.randint(0, len(data.test_images))
-    range_max = 500
+    range_max = 100
     count = 0
     counter = 0
     for x in range(range_max):
