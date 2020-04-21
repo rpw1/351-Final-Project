@@ -20,7 +20,7 @@ class KNN:
         distances : ItemQueue = ItemQueue()
         for key in self.training_data:
             for training_picture in self.training_data[key]:
-                current_distance = picture.getDistance(self.white_space, training_picture)
+                current_distance = picture.oddDistance(training_picture) # picture.getDistance(self.white_space, training_picture)
                 distances.insert(current_distance, key)
         k_distances, k_labels = distances.getMultiple(self.k)
         guessed_label = self.getLabel(k_labels)
@@ -48,11 +48,12 @@ if __name__ == "__main__":
     data = MnistData()
     knn = KNN()
     ran_index = random.randint(0, len(data.test_images))
-    range_max = 100
+    range_max = 500
     count = 0
     counter = 0
     for x in range(range_max):
         counter = counter + 1
         print(counter)
-        count = count + knn.classify_picture(Picture(data.test_images[x]), data.test_labels[x])
+        index = random.randint(0, len(data.test_images))
+        count = count + knn.classify_picture(Picture(data.test_images[index]), data.test_labels[index])
     print(count/range_max)

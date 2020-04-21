@@ -7,7 +7,7 @@ class TrainingData:
 
     training_data : dict = dict()
 
-    def __init__(self, max_length=6):
+    def __init__(self, max_length=10):
 
         zeros : list = []
         ones : list = []

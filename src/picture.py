@@ -45,3 +45,9 @@ class Picture:
                     lowest_distance = current_distance
             distance = distance + lowest_distance
         return distance
+
+    def oddDistance(self, otherPicture):
+        distance = 0
+        for x in range(0, len(self.grid)):
+            distance = distance + (self.grid[x] - otherPicture.grid[x]) ** 2
+        return distance ** 0.5
