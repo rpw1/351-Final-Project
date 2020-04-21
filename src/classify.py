@@ -1,6 +1,6 @@
 from picture import Picture
 from sample import MnistData
-from TrainingData import TrainingData
+from trainingData import TrainingData
 from queue import ItemQueue
 import random, math
 

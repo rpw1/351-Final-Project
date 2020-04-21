@@ -1,5 +1,4 @@
-import sys, math
-from sampleData import SampleData
+import math
 
 class Picture:
 
