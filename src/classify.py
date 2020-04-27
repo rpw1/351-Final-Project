@@ -10,22 +10,23 @@ class KNN:
     white_space : int = None
     training_data : dict = None
 
-    def __init__(self, k = 5, white_space = 50):
+    def __init__(self, k = 6, training_count = 100, white_space = 100):
         self.k = k
         self.white_space = white_space
-        t = TrainingData(100)
+        t = TrainingData(training_count)
         self.training_data = t.training_data
 
-    def classify_picture(self, picture : Picture, label : int):
+    def classify_picture(self, picture : Picture, label : int, euclidean_distance : bool):
         distances : ItemQueue = ItemQueue()
         for key in self.training_data:
             for training_picture in self.training_data[key]:
-                current_distance = picture.oddDistance(training_picture) # picture.getDistance(self.white_space, training_picture)
+                if euclidean_distance:
+                    current_distance = picture.getDistance(self.white_space, training_picture)
+                else:
+                    current_distance = picture.grayscaleDistance(training_picture)
                 distances.insert(current_distance, key)
         k_distances, k_labels = distances.getMultiple(self.k)
         guessed_label = self.getLabel(k_labels)
-        # print("Guessed: " + str(guessed_label))
-        # print("Actual: " + str(label))
         return guessed_label == label
 
 
@@ -42,7 +43,7 @@ class KNN:
                 max_value = count
                 classification = label
         return classification
-        
+
 
 if __name__ == "__main__":
     data = MnistData()
@@ -56,7 +57,7 @@ if __name__ == "__main__":
         counter = counter + 1
         print(counter)
         index = random.randint(0, len(data.test_images))
-        count = count + knn.classify_picture(Picture(data.test_images[index]), data.test_labels[index])
+        count = count + knn.classify_picture(Picture(data.test_images[index]), data.test_labels[index], False)
     print(count/range_max)
     end_time = time.time()
-    print(end_time - start_time) # Printing run time in seconds
+    print(end_time - start_time)

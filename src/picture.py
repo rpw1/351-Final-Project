@@ -48,7 +48,7 @@ class Picture:
 
 
     # found at https://github.com/anandsekar/datashakers-digitrecognizer/blob/master/python/classify.py
-    def oddDistance(self, otherPicture):
+    def grayscaleDistance(self, otherPicture):
         distance = 0
         for x in range(0, len(self.grid)):
             distance = distance + math.pow(self.grid[x] - otherPicture.grid[x], 2)
