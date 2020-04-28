@@ -10,7 +10,7 @@ class KNN:
     white_space : int = None
     training_data : dict = None
 
-    def __init__(self, k = 6, training_count = 100, white_space = 100):
+    def __init__(self, k = 5, training_count = 100, white_space = 200):
         self.k = k
         self.white_space = white_space
         t = TrainingData(training_count)
@@ -27,7 +27,7 @@ class KNN:
                 distances.insert(current_distance, key)
         k_distances, k_labels = distances.getMultiple(self.k)
         guessed_label = self.getLabel(k_labels)
-        return guessed_label == label
+        return guessed_label == str(label)
 
 
     def getLabel(self, labels : list):

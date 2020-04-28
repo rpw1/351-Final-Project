@@ -1,13 +1,20 @@
 from sample import MnistData
 from picture import Picture
+from symbolData import SymbolData
 
 class TrainingData:
 
-    mnist_data : MnistData = MnistData()
+    mnist_data : MnistData = None
+
+    symbol_data : SymbolData = None
 
     training_data : dict = dict()
 
     def __init__(self, max_length=10):
+
+        self.mnist_data = MnistData()
+
+        self.symbol_data = SymbolData()
 
         zeros : list = []
         ones : list = []
@@ -53,16 +60,19 @@ class TrainingData:
             elif label == 9 and len(nines) < max_length:
                 nines.append(Picture(self.mnist_data.training_images[x]))
         
-        self.training_data[0] = zeros
-        self.training_data[1] = ones
-        self.training_data[2] = twos
-        self.training_data[3] = threes
-        self.training_data[4] = fours
-        self.training_data[5] = fives
-        self.training_data[6] = sixes
-        self.training_data[7] = sevens
-        self.training_data[8] = eights
-        self.training_data[9] = nines
+        self.training_data['0'] = zeros
+        self.training_data['1'] = ones
+        self.training_data['2'] = twos
+        self.training_data['3'] = threes
+        self.training_data['4'] = fours
+        self.training_data['5'] = fives
+        self.training_data['6'] = sixes
+        self.training_data['7'] = sevens
+        self.training_data['8'] = eights
+        self.training_data['9'] = nines
+        self.training_data['+'] = self.symbol_data.plus_data
+        self.training_data['-'] = self.symbol_data.minus_data
+        
 
 
     def displayTrainingData(self, key : int):

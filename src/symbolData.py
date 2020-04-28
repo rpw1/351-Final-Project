@@ -3,8 +3,20 @@ from sample import MnistData
 
 class SymbolData:
 
+    plus_data : list = None
+    minus_data : list = None
+
     def __init__(self):
-        super().__init__()
+        self.plus_data = [
+            Picture(self.plus_1), Picture(self.plus_2), Picture(self.plus_3), 
+            Picture(self.plus_4), Picture(self.plus_5),
+            ]
+
+        self.minus_data = [
+            Picture(self.minus_1), Picture(self.minus_2), Picture(self.minus_3), 
+            Picture(self.minus_4), Picture(self.minus_5),
+            ]
+        
 
     plus_1 = [
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -204,7 +216,7 @@ class SymbolData:
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,25,50,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,25,50,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         0,0,0,0,0,0,0,50,250,250,250,50,50,50,50,50,50,0,0,0,0,0,0,0,0,0,0,0,
         0,0,0,0,0,0,0,50,250,250,250,250,250,250,250,250,250,50,50,50,25,0,0,0,0,0,0,0,
         0,0,0,0,0,0,0,25,50,50,50,250,250,250,250,250,250,250,250,250,50,0,0,0,0,0,0,0,
@@ -321,3 +333,5 @@ class SymbolData:
 if __name__ == "__main__":
     data = MnistData()
     s = SymbolData()
+    print(len(s.plus_5))
+    print(len(s.minus_5))
