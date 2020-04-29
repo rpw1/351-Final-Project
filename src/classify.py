@@ -27,7 +27,7 @@ class KNN:
                 distances.insert(current_distance, key)
         k_distances, k_labels = distances.getMultiple(self.k)
         guessed_label = self.getLabel(k_labels)
-        return guessed_label == str(label)
+        return guessed_label, guessed_label == str(label)
 
 
     def getLabel(self, labels : list):
@@ -57,7 +57,8 @@ if __name__ == "__main__":
         counter = counter + 1
         print(counter)
         index = random.randint(0, len(data.test_images))
-        count = count + knn.classify_picture(Picture(data.test_images[index]), data.test_labels[index], False)
+        result_label, wasRight = knn.classify_picture(Picture(data.test_images[index]), data.test_labels[index], False)
+        count = count + wasRight
     print(count/range_max)
     end_time = time.time()
     print(end_time - start_time)

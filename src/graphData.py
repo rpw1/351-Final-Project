@@ -8,7 +8,8 @@ def getErrorAndTime(knn, data, tests = 100):
     start_time = time.time()
     for x in range(tests):
         index = random.randint(0, len(data.test_images) - 1)
-        count = count + knn.classify_picture(Picture(data.test_images[index]), data.test_labels[index], True)
+        guessed_label, wasRight = knn.classify_picture(Picture(data.test_images[index]), data.test_labels[index], True)
+        count = count + wasRight
     end_time = time.time()
     first_accuracy = count / tests
     first_time = end_time - start_time
@@ -17,7 +18,8 @@ def getErrorAndTime(knn, data, tests = 100):
     start_time = time.time()
     for x in range(tests):
         index = random.randint(0, len(data.test_images))
-        count = count + knn.classify_picture(Picture(data.test_images[index]), data.test_labels[index], False)
+        guessed_label, wasRight = knn.classify_picture(Picture(data.test_images[index]), data.test_labels[index], False)
+        count = count + wasRight
         end_time = time.time()
     second_accuracy = count / tests
     second_time = end_time - start_time
