@@ -13,7 +13,7 @@ class Equations:
     queue : list = None
 
     def __init__(self):
-        self.knn = KNN()
+        self.knn = KNN(3,150)
         self.training_data = self.knn.training_data
         t = TestingData()
         self.testing_data = t.test_data
@@ -130,7 +130,7 @@ class Equations:
 
 if __name__ == "__main__":
     e = Equations()
-    print(e.solveEquation(['8', '5', '-', '2', '5']))
+    print(e.solveEquation(['1', '0', '0','/', '2', '5']))
 
             
 
