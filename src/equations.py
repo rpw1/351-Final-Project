@@ -13,7 +13,7 @@ class Equations:
     queue : list = None
 
     def __init__(self):
-        self.knn = KNN(3,150)
+        self.knn = KNN(5,150)
         self.training_data = self.knn.training_data
         t = TestingData()
         self.testing_data = t.test_data
