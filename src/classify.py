@@ -31,6 +31,7 @@ class KNN:
 
 
     def getLabel(self, labels : list):
+        print(labels)
         max_value = -1
         classification = -1
         counts : dict() = dict()

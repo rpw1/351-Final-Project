@@ -32,6 +32,7 @@ class Equations:
         for image in images:
             guessed_label, wasRight = self.knn.classify_picture(image, "-1", False)
             self.args.append(guessed_label)
+        print()
         print(wanted_args)
         print(self.args)
     
