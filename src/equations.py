@@ -135,7 +135,7 @@ class Equations:
 
 if __name__ == "__main__":
     e = Equations()
-    print(e.solveEquation(['1', '0', '0','-', '2', '5']))
+    print(e.solveEquation(['1', '0', '0','/', '2', '5']))
 
             
 

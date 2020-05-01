@@ -3,7 +3,6 @@ import math
 class Picture:
 
     grid = None
-    classification = None
 
     def __init__(self, grid):
         self.grid = grid
