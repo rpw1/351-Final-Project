@@ -2,7 +2,7 @@ from trainingData import TrainingData
 from testingData import TestingData
 from classify import KNN
 from sample import MnistData
-import random
+from random import randint
 
 class Equations:
 
@@ -25,7 +25,7 @@ class Equations:
         images = []
         for arg in wanted_args:
             arg_list = self.testing_data[arg]
-            index = random.randint(0,len(arg_list) - 1)
+            index = randint(0,len(arg_list) - 1)
             print(self.mnist_data.mndata.display(arg_list[index].grid))
             images.append(arg_list[index])
         self.args = []
@@ -135,7 +135,7 @@ class Equations:
 
 if __name__ == "__main__":
     e = Equations()
-    print(e.solveEquation(['1', '0', '0','/', '2', '5']))
+    print(e.solveEquation([str(randint(0,9)), str(randint(0,9)),'+', str(randint(0,9)), str(randint(0,9))]))
 
             
 
