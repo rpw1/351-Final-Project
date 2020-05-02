@@ -5,6 +5,26 @@ from sample import MnistData
 from random import randint
 
 class Equations:
+    """
+        This class is used to setup and solve math equations
+
+        Methods
+        -------
+
+        getArgs(wanted_args : list of strings) -> list of strings
+            This function takes a list of labels and grabs testing pictures for the corresponding label.
+            Then the function classifies the pictures and returns the list of new labels from the classifications
+
+        setup() -> int
+            This function is used to combine the individual classifications into an equation
+            Returns 1 if successful else returns 0
+        
+        solve() -> int
+            This function solves the equation setup by the setup() function
+        
+        solve_equation(wanted_args : list) -> int
+            This function called getArgs(wanted_args), setup() and returns the return value for solve()
+    """
 
     training_data : dict = None
     testing_data : dict = None
@@ -21,7 +41,11 @@ class Equations:
         t = TestingData()
         self.testing_data = t.test_data
     
-    def getArgs(self, wanted_args):
+    def getArgs(self, wanted_args : list) -> list:
+        """
+            This function takes a list of labels and grabs testing pictures for the corresponding label.
+            Then the function classifies the pictures and returns the list of new labels from the classifications
+        """
         images = []
         for arg in wanted_args:
             arg_list = self.testing_data[arg]
@@ -36,7 +60,11 @@ class Equations:
         print(wanted_args)
         print(self.args)
     
-    def setup(self):
+    def setup(self) -> int:
+        """
+            This function is used to combine the individual classifications into an equation
+            Returns 1 if successful else returns 0
+        """
         if self.args == None:
             print("There are no arguments")
             return 0
@@ -67,6 +95,9 @@ class Equations:
         return 1
 
     def solve(self):
+        """
+            This function solves the equation setup by the setup() function
+        """
         if self.queue == None:
             print("Error: Queue is Null")
             return None
@@ -124,7 +155,10 @@ class Equations:
 
         return value
 
-    def solveEquation(self, wanted_args: list):
+    def solveEquation(self, wanted_args: list) -> int:
+        """
+            This function called getArgs(wanted_args), setup() and returns the return value for solve()
+        """
         self.getArgs(wanted_args)
         if self.setup():
             return self.solve() 

@@ -2,6 +2,9 @@ from picture import Picture
 from sample import MnistData
 
 class SymbolData:
+    """ 
+    This class is used to set up the testing data for multiplication, division, addition, subtraction, and decimal symbols.
+    """
 
     plus_data : list = None
     minus_data : list = None

@@ -2,11 +2,25 @@ from sample import MnistData
 from picture import Picture
 
 class TestingData:
+    """
+    This class is used to set up training data 
+
+    Variables
+    ---------
+    test_data : dict
+        A dictionary containing the classification as a key and training pictures as the data
+    """
 
     mnist_data : MnistData = None
     test_data : dict = dict()
 
     def __init__(self, max_length=10):
+        """
+        Parameters
+        ----------
+        max_length : int
+            An integer representing how much training data to get for each number from the MNIST database
+        """
 
         self.mnist_data = MnistData()
 

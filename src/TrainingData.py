@@ -3,6 +3,14 @@ from picture import Picture
 from symbolData import SymbolData
 
 class TrainingData:
+    """ 
+    This class is used to set up training data 
+
+    Variables
+    ---------
+    training_data : dict
+        A dictionary containing the classification as a key and training pictures as the data
+    """
 
     mnist_data : MnistData = None
 
@@ -10,7 +18,13 @@ class TrainingData:
 
     training_data : dict = dict()
 
-    def __init__(self, max_length=10):
+    def __init__(self, max_length=100):
+        """
+        Parameters
+        ----------
+        max_length : int
+            An integer representing how much training data to get for each number from the MNIST database
+        """
 
         self.mnist_data = MnistData()
 
@@ -73,9 +87,4 @@ class TrainingData:
         self.training_data['+'] = self.symbol_data.plus_data
         self.training_data['-'] = self.symbol_data.minus_data
         
-
-
-    def displayTrainingData(self, key : int):
-        for picture in self.training_data[key]:
-            print(self.mnist_data.mndata.display(picture.grid))
     

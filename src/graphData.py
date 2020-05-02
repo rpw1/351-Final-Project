@@ -3,7 +3,22 @@ from picture import Picture
 from sample import MnistData
 import random, time
 
-def getErrorAndTime(knn, data, tests = 100):
+def getErrorAndTime(knn : KNN, data : MnistData, tests = 100):
+    """
+        This function returns the runtime and accuracy for a classifier trying two different distance formulas.
+
+        Parameters
+        ----------
+        knn : KNN
+            This is the classifier getErrorAndTime is testing
+        
+        data : MnistData
+            This object contains the testing and training data used to test the classifier
+        
+        tests : int
+            This is the amount of testing data the function will test the classifier with
+        
+    """
     count = 0
     start_time = time.time()
     for x in range(tests):

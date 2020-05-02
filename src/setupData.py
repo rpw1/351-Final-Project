@@ -1,5 +1,7 @@
 import gzip
 
+# This file is used to decompress the mnist dataset files
+
 with gzip.open('./compressedData/train-images-idx3-ubyte.gz', 'rb') as f:
     file_content = f.read()
     new_file = open('./mnistData/train-images-idx3-ubyte', 'wb')

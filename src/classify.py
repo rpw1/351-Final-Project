@@ -5,18 +5,49 @@ from queue import ItemQueue
 import random, math, time
 
 class KNN:
+    """
+        This class is used to classify pictures
+
+        Methods
+        -------
+        
+        classify_picture(picture : Picture, label : str, euclidean_distance : bool) -> guessed_label, guessed_label == label
+            This function takes in a picture and tries to classify it as the given label by comparing it to the training data
+            The boolean euclidean_distance is used to decide which distance formula to use.
+
+        getLabel(labels : list) -> str
+            This function gets the most frequent label from the given list of labels.
+    """
 
     k : int = None
     white_space : int = None
     training_data : dict = None
 
     def __init__(self, k = 5, training_count = 100, white_space = 200):
+        """
+        Parameters
+        ----------
+        k : int
+            This is used for declaring what K-NN the classifier will be
+
+        training_count: int
+            This is used for how much training data the user would like for each number (0-9)
+
+        white_space : int
+            This is used to set a value in which any gray scale value that is equal to or lower is counted as noise in the picture
+
+        """
         self.k = k
         self.white_space = white_space
         t = TrainingData(training_count)
         self.training_data = t.training_data
 
-    def classify_picture(self, picture : Picture, label : int, euclidean_distance : bool):
+    def classify_picture(self, picture : Picture, label : str, euclidean_distance : bool) -> tuple:
+        """
+            This function takes in a picture and tries to classify it as the given label by comparing it to the training data
+            The boolean euclidean_distance is used to decide which distance formula to use.
+
+        """
         distances : ItemQueue = ItemQueue()
         for key in self.training_data:
             for training_picture in self.training_data[key]:
@@ -30,7 +61,8 @@ class KNN:
         return guessed_label, guessed_label == str(label)
 
 
-    def getLabel(self, labels : list):
+    def getLabel(self, labels : list) -> str:
+        """This function gets the most frequent label from the given list of labels."""
         print(labels)
         max_value = -1
         classification = -1
