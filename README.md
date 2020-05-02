@@ -30,7 +30,6 @@ The training and testing data for our symbols:
 * Division (*)
 * Addition (+)
 * Subtraction (-)
-* Decimal (.)
 
 Each picture has a 28 x 28 grid filled with gray scale values from 0-255.
 The python-mist package has a display function that prints out the grid with @ and dots.

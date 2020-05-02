@@ -3,7 +3,7 @@ from sample import MnistData
 
 class SymbolData:
     """ 
-    This class is used to set up the testing data for multiplication, division, addition, subtraction, and decimal symbols.
+    This class is used to set up the testing data for multiplication, division, addition and subtraction symbols.
     """
 
     plus_data : list = None
