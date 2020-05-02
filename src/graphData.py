@@ -3,7 +3,7 @@ from picture import Picture
 from sample import MnistData
 import random, time
 
-def getErrorAndTime(knn : KNN, data : MnistData, tests = 100):
+def getErrorAndTime(knn, data, tests = 100):
     """
         This function returns the runtime and accuracy for a classifier trying two different distance formulas.
 

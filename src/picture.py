@@ -68,7 +68,7 @@ class Picture:
         """Takes in two points and returns the euclidean distance between them"""
         return math.sqrt(math.pow(point2[0] - point1[0], 2) + math.pow(point2[1] - point1[1], 2))
 
-    def getDistance(self, white_space : int, otherPicture : Picture) -> int:
+    def getDistance(self, white_space : int, otherPicture) -> int:
         """Gets the sums of the distances of the points for the picture compared to the given picture"""
         first_points, second_points = self.getPoints(white_space, otherPicture)
         distance = 0
