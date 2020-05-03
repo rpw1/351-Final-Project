@@ -75,7 +75,8 @@ class Equations:
             except TypeError:
                 print("Error: only argument was a function")
                 return 0
-            return(value)
+            self.queue = [value]
+            return 1
 
         self.queue : list = []
         
@@ -101,6 +102,9 @@ class Equations:
         if self.queue == None:
             print("Error: Queue is Null")
             return None
+        if len(self.queue) == 1:
+            return self.queue[0]
+        print("Start")
         print(self.queue)
         value = 0.0
         done = False
@@ -109,20 +113,33 @@ class Equations:
             max_length = len(self.queue) - 1
             if self.queue[index] == '*':
                 value = float(self.queue[index - 1]) * float(self.queue[index + 1])
+                print("**************")
+                print(self.queue)
+                print(value)
+                del self.queue[index + 1]
                 del self.queue[index]
                 del self.queue[index - 1]
-                del self.queue[index - 1]
+                self.queue.insert(index - 1, value)
+                print(self.queue)
+                print("**************")
                 index = 0
                 if len(self.queue) == 0:
-                    return value
+                    return self.queue[0]
             elif self.queue[index] == '/':
-                value = value + float(self.queue[index - 1]) / float(self.queue[index + 1])
+
+                value = float(self.queue[index - 1]) / float(self.queue[index + 1])
+                print("///////////////")
+                print(self.queue)
+                print(value)
+                del self.queue[index + 1]
                 del self.queue[index]
                 del self.queue[index - 1]
-                del self.queue[index - 1]
+                self.queue.insert(index - 1, value)
+                print(self.queue)
+                print("////////////////")
                 index = 0
-                if len(self.queue) == 0:
-                    return value
+                if len(self.queue) == 1:
+                    return self.queue[0]
             
             if index == max_length:
                 done = True
@@ -132,21 +149,33 @@ class Equations:
         index = 0
         while not done:
             if self.queue[index] == '+':
+                print("+++++++++++++++")
+                print(self.queue)
                 value = float(self.queue[index - 1]) + float(self.queue[index + 1])
+                print(value)
+                del self.queue[index + 1]
                 del self.queue[index]
                 del self.queue[index - 1]
-                del self.queue[index - 1]
+                self.queue.insert(index - 1, value)
+                print(self.queue)
+                print("+++++++++++++++")
                 index = 0
-                if len(self.queue) == 0:
-                    return value
+                if len(self.queue) == 1:
+                    return self.queue[0]
             elif self.queue[index] == '-':
-                value = value + float(self.queue[index - 1]) - float(self.queue[index + 1])
+                value = float(self.queue[index - 1]) - float(self.queue[index + 1])
+                print("------------")
+                print(self.queue)
+                print(value)
+                del self.queue[index + 1]
                 del self.queue[index]
                 del self.queue[index - 1]
-                del self.queue[index - 1]
+                self.queue.insert(index - 1, value)
+                print(self.queue)
+                print("------------")
                 index = 0
-                if len(self.queue) == 0:
-                    return value
+                if len(self.queue) == 1:
+                    return self.queue[0]
             
             if len(self.queue) == 0:
                 done = True
