@@ -18,6 +18,7 @@ def printOptions():
     print("Input 'd' to see a simple demo of the program")
     print("Input 'e' to solve a random equation")
     print("Input 'p' to print out your current list of arguments")
+    print("Input 'u' to remove the last item added to the arguments")
     print("Input 'q' to quit the program")
     print("Input 'c' to clear the terminal and list options again")
 
@@ -60,6 +61,12 @@ while True:
 
     elif user_input == 'p':
         print(args)
+    
+    elif user_input == 'u':
+        if len(args) > 0:
+            del args[len(args) - 1]
+        else:
+            print("Error: There are no arguments")
 
     elif user_input == 'q':
         print("Exitting Program ...")

@@ -75,6 +75,7 @@ Here is an example of testing/training data. This is a 9 from the MNIST database
 * Input 'd' to see a simple demo of the program
 * Input 'e' to solve a random equation
 * Input 'p' to print out your current list of arguments
+* Input 'u' to remove the last item added to the arguments
 * Input 'q' to quit the program
 * Input 'c' to clear the terminal and list options again
 
