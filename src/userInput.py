@@ -13,7 +13,6 @@ def printOptions():
     print("Any one digit number (0-9)")
     print("Addition, Subtraction, Multiplication and Division symbols (+, -, *, /)")
     print("If you would like to input numbers with multiple digits, place them one after another")
-    print("If you want a negative number, then only make the first digit negative")
     print("Input 's' to have the program solve the inputted function")
     print("Input 'r' to reset the equation")
     print("Input 'd' to see a simple demo of the program")

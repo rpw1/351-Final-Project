@@ -64,7 +64,21 @@ Here is an example of testing/training data. This is a 9 from the MNIST database
 ............................
 ```
 
-## **Testing The Project**
+## **Using The Calculator**
+
+* Enter one symbol/number at a time
+* Only enter positive single digit numbers at a time (0-9)
+* Acceptable symbols are for addition, subtraction, multiplication and division (+, -, *, /)
+* To create a multiple digit number then enter numbers back to back
+* Input 's' to have the program solve the inputted function
+* Input 'r' to reset the equation
+* Input 'd' to see a simple demo of the program
+* Input 'e' to solve a random equation
+* Input 'p' to print out your current list of arguments
+* Input 'q' to quit the program
+* Input 'c' to clear the terminal and list options again
+
+
 
 [1]: https://pypi.org/project/python-mnist/
 
