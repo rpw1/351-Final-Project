@@ -51,7 +51,7 @@ while True:
             digits = randint(1,3)
             for j in range(digits):
                 args.append(str(randint(0,9)))
-            symbol_index = randint(10,11)
+            symbol_index = randint(10,13)
             args.append(symbol_inputs[symbol_index])
         digits = randint(1,3)
         for j in range(digits):
