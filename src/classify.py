@@ -74,7 +74,7 @@ class KNN:
             if count > max_value:
                 max_value = count
                 classification = label
-        print("Actual Label: " + str(actual_label) + ' -> ' + str(labels) + ' ->  Label Received: ' + str(classification))
+        print("Actual Label: " + str(actual_label) + ' -> ' + str(labels) + ' ->  Predicted Label: ' + str(classification))
         return classification
 
 

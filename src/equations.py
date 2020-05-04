@@ -63,7 +63,7 @@ class Equations:
             self.args.append(guessed_label)
 
         print()
-        print("Arguments Received: " + str(self.args))
+        print("Predicted Arguments: " + str(self.args))
         print()
     
     def setup(self) -> int:
