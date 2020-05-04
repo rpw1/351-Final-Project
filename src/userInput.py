@@ -30,6 +30,7 @@ printOptions()
 while True:
     user_input = input("Enter Symbol: ")
     if user_input == 's':
+        print()
         args_length = len(args)
         if args_length == 0:
             print("Please enter your funtion arguments")
@@ -38,20 +39,24 @@ while True:
         args = []
 
     elif user_input == 'r':
+        print()
+        print("Arguments Reset")
         args = []
 
     elif user_input == 'd':
+        print()
         user_equation.args = ['1', '0', '+', '5' ,'*', '2', '/', '5', '-', '1', '1']
         user_equation.setup()
         print("Answer :" + str(user_equation.solve()))
 
     elif user_input == 'e':
+        print()
         num_of_operators = randint(1,4)
         for i in range(num_of_operators):
             digits = randint(1,3)
             for j in range(digits):
                 args.append(str(randint(0,9)))
-            symbol_index = randint(10,11)
+            symbol_index = randint(10,13)
             args.append(symbol_inputs[symbol_index])
         digits = randint(1,3)
         for j in range(digits):
@@ -60,15 +65,18 @@ while True:
         args = []
 
     elif user_input == 'p':
+        print()
         print(args)
     
     elif user_input == 'u':
+        print()
         if len(args) > 0:
             del args[len(args) - 1]
         else:
             print("Error: There are no arguments")
 
     elif user_input == 'q':
+        print()
         print("Exitting Program ...")
         break
 

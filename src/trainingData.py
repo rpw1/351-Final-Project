@@ -86,5 +86,7 @@ class TrainingData:
         self.training_data['9'] = nines
         self.training_data['+'] = self.symbol_data.plus_data
         self.training_data['-'] = self.symbol_data.minus_data
+        self.training_data['*'] = self.symbol_data.multi_data
+        self.training_data['/'] = self.symbol_data.divi_data
         
     

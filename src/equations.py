@@ -29,7 +29,6 @@ class Equations:
     training_data : dict = None
     testing_data : dict = None
     knn : KNN = None
-    mnist_data = MnistData()
 
     args : list = None
     queue : list = None
@@ -47,18 +46,25 @@ class Equations:
             Then the function classifies the pictures and returns the list of new labels from the classifications
         """
         images = []
+
+        print()
+        print("Wanted Arguments: " + str(wanted_args))
+        print()
+
         for arg in wanted_args:
             arg_list = self.testing_data[arg]
             index = randint(0,len(arg_list) - 1)
-            print(self.mnist_data.mndata.display(arg_list[index].grid))
             images.append(arg_list[index])
         self.args = []
+        count = 0
         for image in images:
-            guessed_label, wasRight = self.knn.classify_picture(image, "-1", False)
+            guessed_label, wasRight = self.knn.classify_picture(image, wanted_args[count], False)
+            count = count + 1
             self.args.append(guessed_label)
+
         print()
-        print(wanted_args)
-        print(self.args)
+        print("Arguments Received: " + str(self.args))
+        print()
     
     def setup(self) -> int:
         """
@@ -106,6 +112,7 @@ class Equations:
             return self.queue[0]
         print("Start")
         print(self.queue)
+        print()
         value = 0.0
         done = False
         index = 0
@@ -113,30 +120,28 @@ class Equations:
             max_length = len(self.queue) - 1
             if self.queue[index] == '*':
                 value = float(self.queue[index - 1]) * float(self.queue[index + 1])
-                print("**************")
-                print(self.queue)
+                print(self.queue[index - 1:index + 2])
                 print(value)
                 del self.queue[index + 1]
                 del self.queue[index]
                 del self.queue[index - 1]
                 self.queue.insert(index - 1, value)
                 print(self.queue)
-                print("**************")
+                print()
                 index = 0
-                if len(self.queue) == 0:
+                if len(self.queue) == 1:
                     return self.queue[0]
             elif self.queue[index] == '/':
 
                 value = float(self.queue[index - 1]) / float(self.queue[index + 1])
-                print("///////////////")
-                print(self.queue)
+                print(self.queue[index - 1:index + 2])
                 print(value)
                 del self.queue[index + 1]
                 del self.queue[index]
                 del self.queue[index - 1]
                 self.queue.insert(index - 1, value)
                 print(self.queue)
-                print("////////////////")
+                print()
                 index = 0
                 if len(self.queue) == 1:
                     return self.queue[0]
@@ -149,30 +154,28 @@ class Equations:
         index = 0
         while not done:
             if self.queue[index] == '+':
-                print("+++++++++++++++")
-                print(self.queue)
                 value = float(self.queue[index - 1]) + float(self.queue[index + 1])
+                print(self.queue[index - 1:index + 2])
                 print(value)
                 del self.queue[index + 1]
                 del self.queue[index]
                 del self.queue[index - 1]
                 self.queue.insert(index - 1, value)
                 print(self.queue)
-                print("+++++++++++++++")
+                print()
                 index = 0
                 if len(self.queue) == 1:
                     return self.queue[0]
             elif self.queue[index] == '-':
                 value = float(self.queue[index - 1]) - float(self.queue[index + 1])
-                print("------------")
-                print(self.queue)
+                print(self.queue[index - 1:index + 2])
                 print(value)
                 del self.queue[index + 1]
                 del self.queue[index]
                 del self.queue[index - 1]
                 self.queue.insert(index - 1, value)
                 print(self.queue)
-                print("------------")
+                print()
                 index = 0
                 if len(self.queue) == 1:
                     return self.queue[0]

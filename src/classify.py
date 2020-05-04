@@ -57,13 +57,12 @@ class KNN:
                     current_distance = picture.grayscaleDistance(training_picture)
                 distances.insert(current_distance, key)
         k_distances, k_labels = distances.getMultiple(self.k)
-        guessed_label = self.getLabel(k_labels)
+        guessed_label = self.getLabel(k_labels, label)
         return guessed_label, guessed_label == str(label)
 
 
-    def getLabel(self, labels : list) -> str:
+    def getLabel(self, labels : list, actual_label) -> str:
         """This function gets the most frequent label from the given list of labels."""
-        print(labels)
         max_value = -1
         classification = -1
         counts : dict() = dict()
@@ -75,6 +74,7 @@ class KNN:
             if count > max_value:
                 max_value = count
                 classification = label
+        print("Actual Label: " + str(actual_label) + ' -> ' + str(labels) + ' ->  Label Received: ' + str(classification))
         return classification
 
 
