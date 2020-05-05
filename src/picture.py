@@ -2,7 +2,7 @@ import math
 
 class Picture:
     """
-        This class is used to compare two different 28 x 28 pixel images
+        This class is used to compare two different 28 x 28 pixel images represented as 784 length lists
 
         Methods
         -------

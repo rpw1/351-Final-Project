@@ -80,6 +80,16 @@ Here is an example of testing/training data. This is a 9 from the MNIST database
 * Input 'c' to clear the terminal and list options again
 
 
+To test out the calculator, go to the relative path of the project and type
+```shell
+$ py src/userInput.py
+```
+or
+```shell
+$ pipenv run python src/userInput.py
+```
+
+
 
 [1]: https://pypi.org/project/python-mnist/
 
