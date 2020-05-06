@@ -1380,11 +1380,3 @@ class SymbolData:
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     ]
-
-
-
-if __name__ == "__main__":
-    data = MnistData()
-    s = SymbolData()
-    print(len(s.plus_5))
-    print(len(s.minus_5))

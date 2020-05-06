@@ -77,21 +77,3 @@ class KNN:
         print("Actual Label: " + str(actual_label) + ' -> ' + str(labels) + ' ->  Predicted Label: ' + str(classification))
         return classification
 
-
-if __name__ == "__main__":
-    data = MnistData()
-    knn = KNN()
-    ran_index = random.randint(0, len(data.test_images))
-    range_max = 100
-    count = 0
-    counter = 0
-    start_time = time.time()
-    for x in range(range_max):
-        counter = counter + 1
-        print(counter)
-        index = random.randint(0, len(data.test_images))
-        result_label, wasRight = knn.classify_picture(Picture(data.test_images[index]), data.test_labels[index], False)
-        count = count + wasRight
-    print(count/range_max)
-    end_time = time.time()
-    print(end_time - start_time)

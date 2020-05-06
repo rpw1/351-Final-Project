@@ -198,10 +198,3 @@ class Equations:
             print("Error in setup")
             return None
 
-
-if __name__ == "__main__":
-    e = Equations()
-    print(e.solveEquation([str(randint(0,9)), str(randint(0,9)),'+', str(randint(0,9)), str(randint(0,9))]))
-
-            
-
