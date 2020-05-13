@@ -1,7 +1,5 @@
-from trainingData import TrainingData
 from testingData import TestingData
 from classify import KNN
-from sample import MnistData
 from random import randint
 
 class Equations:
@@ -12,18 +10,19 @@ class Equations:
         -------
 
         getArgs(wanted_args : list of strings) -> list of strings
-            This function takes a list of labels and grabs testing pictures for the corresponding label.
-            Then the function classifies the pictures and returns the list of new labels from the classifications
+            This function takes a list of labels, gives each label a corresponding testing image,
+            classifies the label based on the testing image, and 
+            returns a list of classifications corresponding the the inputted labels.
 
         setup() -> int
-            This function is used to combine the individual classifications into an equation
+            This function is used to combine the individual classifications into an equation.
             Returns 1 if successful else returns 0
         
         solve() -> int
-            This function solves the equation setup by the setup() function
+            This function solves the equation created by the setup() method.
         
         solve_equation(wanted_args : list) -> int
-            This function called getArgs(wanted_args), setup() and returns the return value for solve()
+            This function called getArgs(wanted_args), setup() and returns the return value for solve().
     """
 
     training_data : dict = None
@@ -35,6 +34,21 @@ class Equations:
 
 
     def __init__(self):
+        """
+        Attributes
+        ----------
+        knn : KNN
+            This is used to classify the the arguments of the equation.
+            It is set for a 6-NN using the picture.grayscaleDistance and having 150 training images for each 1 digit number.
+
+        training_data : dict
+            This is the training images created from the KNN object.
+            
+        testing_data : dict
+            This is testing images created from the TestingData object.
+            This data is used to represent the arguments passed by the user in getArgs.
+
+        """
         self.knn = KNN(6,150)
         self.training_data = self.knn.training_data
         t = TestingData()
@@ -42,8 +56,21 @@ class Equations:
     
     def getArgs(self, wanted_args : list) -> list:
         """
-            This function takes a list of labels and grabs testing pictures for the corresponding label.
-            Then the function classifies the pictures and returns the list of new labels from the classifications
+            This function takes a list of labels, gives each label a corresponding testing image,
+            classifies the label based on the testing image, and 
+            returns a list of classifications corresponding the the inputted labels.
+
+            Parameters
+            ----------
+            wanted_args : list
+                This is a list of labels represented as string.
+                It represents the equation the user wants to be solved.
+
+            Returns
+            -------
+            list
+                The return value is a list of labels.
+                Each label in the list of labels was created by putting wanted_args through the knn classifier.
         """
         images = []
 
@@ -68,8 +95,13 @@ class Equations:
     
     def setup(self) -> int:
         """
-            This function is used to combine the individual classifications into an equation
-            Returns 1 if successful else returns 0
+            This function is used to combine the individual classifications into an equation.
+            Ex: ['3', '0', '+', '5'] -> ['30', '+', '5']
+
+            Returns
+            --------
+            int
+                This function 1 if successful else returns 0.
         """
         if self.args == None:
             print("There are no arguments")
@@ -103,7 +135,13 @@ class Equations:
 
     def solve(self):
         """
-            This function solves the equation setup by the setup() function
+            This function solves the equation created by the setup() method.
+
+            Returns
+            -------
+            int
+                The value of the solved equation.
+
         """
         if self.queue == None:
             print("Error: Queue is Null")
@@ -189,7 +227,19 @@ class Equations:
 
     def solveEquation(self, wanted_args: list) -> int:
         """
-            This function called getArgs(wanted_args), setup() and returns the return value for solve()
+            This function calls getArgs(wanted_args), setup() and returns the return value for solve().
+
+            Parameters
+            ----------
+            wanted_args : list
+                This is a list of labels represented as string.
+                It represents the equation the user wants to be solved.
+
+            Returns
+            --------
+            The value of the solved the equation or None if an error occurred.
+
+
         """
         self.getArgs(wanted_args)
         if self.setup():

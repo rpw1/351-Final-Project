@@ -1,5 +1,4 @@
 from picture import Picture
-from sample import MnistData
 
 class SymbolData:
     """ 

@@ -1,19 +1,16 @@
 from picture import Picture
-from sample import MnistData
 from trainingData import TrainingData
 from queue import ItemQueue
-import random, math, time
 
 class KNN:
     """
-        This class is used to classify pictures
+        This class is used to create a KNN classifier for the handwritten images
 
         Methods
         -------
         
-        classify_picture(picture : Picture, label : str, euclidean_distance : bool) -> guessed_label, guessed_label == label
-            This function takes in a picture and tries to classify it as the given label by comparing it to the training data
-            The boolean euclidean_distance is used to decide which distance formula to use.
+        classify_picture(picture : Picture, label : str, euclidean_distance : bool) -> tuple
+            This function takes a Picture and classifies it by comparing the given picture to training images.
 
         getLabel(labels : list) -> str
             This function gets the most frequent label from the given list of labels.
@@ -28,14 +25,17 @@ class KNN:
         Parameters
         ----------
         k : int
-            This is used for declaring what K-NN the classifier will be
+            This is used for declaring what K the K-NN the classifier will be.
+            k = 5 -> 5-NN
 
         training_count: int
-            This is used for how much training data the user would like for each number (0-9)
+            This is used for how much training data the user would like for each number (0-9).
+            training_count = 100 -> 100 training images for 0, 100 training images for 1, ... 100 training images for 9
 
         white_space : int
-            This is used to set a value in which any gray scale value that is equal to or lower is counted as noise in the picture
-
+            This is used to set a value in which any gray scale value that is equal to or lower is counted as noise in the picture.
+            white_space = 200 -> [100, 200, 201, 0] only indices 1, 2 and 4 would count as noise
+            This would mean that indices 1, 2 and 4 wouldn't be classified as a point in picture.getPoints
         """
         self.k = k
         self.white_space = white_space
@@ -44,8 +44,27 @@ class KNN:
 
     def classify_picture(self, picture : Picture, label : str, euclidean_distance : bool) -> tuple:
         """
-            This function takes in a picture and tries to classify it as the given label by comparing it to the training data
-            The boolean euclidean_distance is used to decide which distance formula to use.
+            This function takes a Picture and classifies it by comparing the given picture to training images. 
+
+            Parameters
+            ----------
+            picture : Picture
+                This is an object from the picture.Picture class.
+                It represents a 784 array containing grayscale values for the given image.
+
+            label : str
+                This represents the label or classification of the picture parameter.
+
+            euclidean_distance : boolean
+                This is used for choosing which distance formula to compare the picture parameter.
+                euclidean_distance = True -> uses picture.getDistance
+                euclidean_distance = False -> uses picture.grayscaleDistance
+
+            Returns
+            -------
+            (str, boolean)
+                The return value is a tuple containing the classification created by the classifier and
+                a boolean checking if the classification matched the inputted label parameter.
 
         """
         distances : ItemQueue = ItemQueue()
@@ -61,8 +80,24 @@ class KNN:
         return guessed_label, guessed_label == str(label)
 
 
-    def getLabel(self, labels : list, actual_label) -> str:
-        """This function gets the most frequent label from the given list of labels."""
+    def getLabel(self, labels : list, actual_label : str) -> str:
+        """
+        This function gets the most frequent label from the given list of labels.
+
+        Parameters
+        ----------
+        labels : list
+            This is a list of strings that represent possible classifications for the given actual_label
+        
+        actual_label : str
+            This is a string representing the label that the parameter labels is trying to return
+
+        Returns
+        -------
+        str
+            The most frequent label in the parameter labels
+
+        """
         max_value = -1
         classification = -1
         counts : dict() = dict()

@@ -1,5 +1,4 @@
 from mnist import MNIST
-import random
 
 class MnistData:
     """ This class sets up the testing and training data from the MNIST dataset"""

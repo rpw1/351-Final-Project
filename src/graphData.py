@@ -1,7 +1,8 @@
 from classify import KNN
 from picture import Picture
 from sample import MnistData
-import random, time
+from random import randint
+from time import time
 
 def getErrorAndTime(knn, data, tests = 100):
     """
@@ -10,32 +11,39 @@ def getErrorAndTime(knn, data, tests = 100):
         Parameters
         ----------
         knn : KNN
-            This is the classifier getErrorAndTime is testing
+            This is the classifier that getErrorAndTime is using to test runtime and accuracy
         
         data : MnistData
-            This object contains the testing and training data used to test the classifier
+            This object contains the testing and training data used to test the inputted knn
         
         tests : int
             This is the amount of testing data the function will test the classifier with
+
+        Returns
+        -------
+        tuple - > ((time, time), (accuracy, accuracy))
+            This tuple contains two tuples containing stats on runtime and accuracy for the classifier.
+            The first time and accuracy in the tuples uses the picture.getDistace method to compare images
+            The second time and accuracy in the tuples uses the picture.grayscaleDistance method to compare images
         
     """
     count = 0
-    start_time = time.time()
+    start_time = time()
     for x in range(tests):
-        index = random.randint(0, len(data.test_images) - 1)
+        index = randint(0, len(data.test_images) - 1)
         guessed_label, wasRight = knn.classify_picture(Picture(data.test_images[index]), data.test_labels[index], True)
         count = count + wasRight
-    end_time = time.time()
+    end_time = time()
     first_accuracy = count / tests
     first_time = end_time - start_time
 
     count = 0
-    start_time = time.time()
+    start_time = time()
     for x in range(tests):
-        index = random.randint(0, len(data.test_images))
+        index = randint(0, len(data.test_images))
         guessed_label, wasRight = knn.classify_picture(Picture(data.test_images[index]), data.test_labels[index], False)
         count = count + wasRight
-        end_time = time.time()
+        end_time = time()
     second_accuracy = count / tests
     second_time = end_time - start_time
     return (first_time, second_time), (first_accuracy, second_accuracy)
